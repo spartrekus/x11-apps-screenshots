@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Cool, but obscure X11 tools</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="The Cyber Vanguard"/>
+    <meta name="description" content="Cool, but obscure X11 tools." />
+    <meta name="keywords" content="FreeBSD, Unix, X, X11, Xorg, X Window System"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+        html, body      { font-family: serif; margin: 0px; padding: 0px; }
+        body            { background-image: url('bg.gif'); background-attachment: fixed; }
+        code            { background-color: #f0f0f0; }
+        h1, h2, h3      { font-family: sans-serif; }
+        h1              { font-size: 170%; }
+        h2              { display: block; border-style: groove; border-width: 0 0 2px 0; font-size: 140%; margin-top: 30px; }
+        li code, p code { padding:0.15em 0.25em 0.15em 0.25em; }
+        img             { height: auto; max-width: 100%; }
+        pre             { background-color: #f0f0f0; padding: 10px; }
+        #container      { background-color: #ffffff; margin-left: 50px; padding: 50px; max-width: 785px; }
+        #footer         { font-size: x-small; margin-top: 25px; text-align: center; }
+        #toc            { background-color: #ffffff; border-style: groove; border-width: 2px; float: right; font-size: small; line-height: 1.4em; margin: 0 0 20px 20px; padding: 10px 0 10px 0; width: 185px; }
+    </style>
+</head>
+
+<body>
+
+<!--
+    todo: xfm, xplaycd, xchat, xv, x11vnc, gvim, xpdf, xfig,
+    xpra/xmove, rxvt, xzgv, xpenguins, xgraph, xbiff, xmgrace, xwd, xxgdvb,
+    xwininfo, xtacy, xmag, xmascot, xmsg, xcolors, xbanner, xdialog, xev,
+    xfishtank, xgc, xidle, xantfarm, xglobe, xworld, xephem, xphoone, xtide,
+    xmoontool, xanalyzer, xhippo, xmcd, xmix, xmorse, rasmol, sattrack,
+    xdiary, xrolo, xed, x49gp, x48, xbraitenberg, xcpc, xhomer, xgalaga, xchomp,
+    battailion, xtetris, xbl, xbattle, xbat, xasteroids, xabacus, xzx,
+    xfireworks, xchadance, xinvaders, xinvaders3d, xlife, xmbbrowser, xipmsg,
+    xpaint, xmandel, xless, xplot, xfsm, xalarm, xtimer, bitmap, xdiskusage,
+    xarclock, xoj, xnest, Xfpovray, xmars, xsol, xjed,
+    xsysstats, xshostakovich, xwrits
+//-->
+
+<div id="container">
+
+<p><a href="/index.html"><img src="left.gif" alt="back" height="30" title="back" width="30" /></a></p>
+
+<h1>Cool, but obscure X11 tools</h1>
+
+<div id="toc">
+<ul>
+    <li><a href="#free42">Free42</a></li>
+    <li><a href="#glxgears">GLXGears</a></li>
+    <li><a href="#gmixer">GMixer</a></li>
+    <li><a href="#micropolis">Micropolis</a></li>
+    <li><a href="#sunclock">Sunclock</a></li>
+    <li><a href="#x026">X026</a></li>
+    <li><a href="#x48">X48</a></li>
+    <li><a href="#xarchiver">XArchiver</a></li>
+    <li><a href="#xascii">XASCII</a></li>
+    <li><a href="#xbiff">XBiff</a></li>
+    <li><a href="#xbill">XBill</a></li>
+    <li><a href="#xboard">XBoard</a></li>
+    <li><a href="#xcalc">XCalc</a></li>
+    <li><a href="#xcalendar">XCalendar</a></li>
+    <li><a href="#xchm">XCHM</a></li>
+    <li><a href="#xclipboard">XClipboard</a></li>
+    <li><a href="#xclock">XClock</a></li>
+    <li><a href="#xclock-cat">XClock/Cat Clock</a></li>
+    <li><a href="#xcolorsel">XColorSel</a></li>
+    <li><a href="#xconsole">XConsole</a></li>
+    <li><a href="#xedit">XEdit</a></li>
+    <li><a href="#xearth">XEarth</a></li>
+    <li><a href="#xeyes">XEyes</a></li>
+    <li><a href="#xfontsel">XFontSel</a></li>
+    <li><a href="#xkill">XKill</a></li>
+    <li><a href="#xlennart">XLennart</a></li>
+    <li><a href="#xload">XLoad</a></li>
+    <li><a href="#xlock">XLock</a></li>
+    <li><a href="#xlogo">XLogo</a></li>
+    <li><a href="#xman">XMan</a></li>
+    <li><a href="#xmahjongg">XMahjongg</a></li>
+    <li><a href="#xmessage">XMessage</a></li>
+    <li><a href="#xmixer">XMixer</a></li>
+    <li><a href="#xmmix">XMMIX</a></li>
+    <li><a href="#xmore">XMore</a></li>
+    <li><a href="#xmotd">XMotd</a></li>
+    <li><a href="#xmosaic">XMosaic</a></li>
+    <li><a href="#xmountains">XMountains</a></li>
+    <li><a href="#xneko">XNeko</a></li>
+    <li><a href="#xodometer">XOdometer</a></li>
+    <li><a href="#xosview">XOSView</a></li>
+    <li><a href="#xpostit">XPostIt</a></li>
+    <li><a href="#xroach">XRoach</a></li>
+    <li><a href="#xscreensaver">XScreenSaver</a></li>
+    <li><a href="#xsnow">XSnow</a></li>
+    <li><a href="#xspread">XSpread</a></li>
+    <li><a href="#xterm">XTerm</a></li>
+    <li><a href="#xv">Xv</a></li>
+    <li><a href="#xvkbd">Xvkbd</a></li>
+    <li><a href="#xzoom">XZoom</a></li>
+</ul>
+</div>
+
+<p>A small collection of cool Unix tools for the X Window System. For cool
+terminal tools, see
+<a href="https://kkovacs.eu/cool-but-obscure-unix-tools">Kristof Kovacs' list</a>.
+All applications have been tested on FreeBSD but should run on other Unix-like
+operating systems as well.</p>
+
+<h2 id="free42">Free42</h2>
+<img src="free42.gif" alt="Free42" height="671" width="350" />
+<p>Simulation of the HP-42S scientific calculator and HP-82240 printer.</p>
+<pre><code># pkg install misc/free42</code></pre>
+
+<h2 id="glxgears">GLXGears</h2>
+<img src="glxgears.gif" alt="glxgears" height="330" width="310" />
+<p>A simple OpenGL tool for testing your graphics adapter.</p>
+<pre><code># pkg install graphics/mesa-demos</code></pre>
+
+<h2 id="gmixer">GMixer</h2>
+<img src="gmixer.gif" alt="gmixer" height="126" width="140" />
+<p>Audio mixer for X11, based on GTK+ 1.2.</p>
+<pre><code># pkg install audio/gmixer</code></pre>
+
+<h2 id="micropolis">Micropolis</h2>
+<img src="micropolis.gif" alt="Micropolis" height="530" width="760" />
+<p>Open-source version of the famous computer game SimCity. Available on
+<a href="https://github.com/interkosmos/micropolis">GitHub</a>.</p>
+<pre><code># git clone https://github.com/interkosmos/micropolis.git</code></pre>
+
+<h2 id="sunclock">Sunclock</h2>
+<img src="sunclock.gif" alt="sunclock" height="266" width="387" />
+<p>A fancy clock for the X Window system, providing local time (legal time and
+solar time), sunrise, sunset and various geographical data through a point and
+click interface.</p>
+<pre><code># pkg install astro/sunclock</code></pre>
+
+<h2 id="x026">X026</h2>
+<img src="x026.gif" alt="x026" height="405" width="767" />
+<p>X026 is an keypunch emulator, simulating the
+<a href="http://www.columbia.edu/cu/computinghistory/026.html">IBM 026</a>.
+It is perfect for writing FORTRAN code on Hollerith punch cards and getting a
+clearer picture on how laborius data input back then was. The default character
+set is
+<a href="http://homepage.divms.uiowa.edu/~jones/cards/codes.html">BCD-H</a>.</p>
+<pre><code># pkg install deskutils/x026</code></pre>
+
+<h2 id="x48">X48</h2>
+<img src="x48.gif" alt="x48" height="763" width="336" />
+<p>Emulator of the HP 48GX graphing calculator. ROM image is included.</p>
+<pre><code># pkg install emulators/x48</code></pre>
+
+<h2 id="xarchiver">XArchiver</h2>
+<img src="xarchiver.gif" alt="xarchiver" height="337" width="640" />
+<p>XArchiver is a GTK+2 front-end to various archiving tools (<code>tar</code>,
+<code>zip</code>, <code>7z</code>, …).</p>
+<pre><code># pkg install archivers/xarchiver</code></pre>
+
+<h2 id="xascii">XASCII</h2>
+<img src="xascii.gif" alt="xascii" height="429" width="428" />
+<p>XASCII displays the ASCII table in hex, decimal, and octal.</p>
+<pre><code># pkg install x11/xascii</code></pre>
+
+<h2 id="xbiff">XBiff</h2>
+<img src="xbiff.gif" alt="xbiff" height="130" width="110" />
+<p>XBiff shows a small mailbox with its flag raised when new mail arrives in
+your inbox. It simply monitors the size of a given file. For instance, the
+cache of the Sylpheed e-mail client can be watched with:</p>
+<pre><code>$ xbiff -file $HOME/.sylpheed-2.0/imapcache/&lt;server&gt;/&lt;address&gt;/INBOX/.sylpheed_cache</code></pre>
+<p>You can change the pixmap in <code>~/.Xdefaults</code>:</p>
+<pre><code>xbiff*flip: false
+xbiff*fullPixmap: mailfull
+xbiff*emptyPixmap: mailempty
+xbiff*fullPixmapMask: mailfullmsk
+xbiff*emptyPixmapMask: mailemptymsk
+xbiff*shapeWindow: true</code></pre>
+<p>Install it with:</p>
+<pre><code># pkg install x11/xbiff</code></pre>
+
+<h2 id="xbill">XBill</h2>
+<img src="xbill.gif" alt="xbill" height="452" width="410" />
+<p>XBill is an arcade game from 1994 in which the player has to prevent an evil
+computer hacker named "<a href="bill.gif">Bill</a>" from installing a popular
+operating system on various machines. The OS can spread over networks and purges
+existing systems (BSD, Solaris, SGI IRIX, …). A contemporary modification of the
+game is known as <a href="#xlennart">XLennart</a>.</p>
+<pre><code># pkg install games/xbill</code></pre>
+
+<h2 id="xboard">XBoard</h2>
+<img src="xboard.gif" alt="xboard" height="520" width="420" />
+<p>XBoard is a graphical front-end for chess engines like GNU Chess. Start it
+with <code>xboard -fcp 'gnuchess --xboard'</code>.</p>
+<pre><code># pkg install games/xboard</code></pre>
+
+<h2 id="xcalc">XCalc</h2>
+<img src="xcalculator.gif" alt="xcalculator" height="334" width="236" />
+<p>A simple and clean scientific calculator for X11. Additional colour styles
+imitating the Texas Instruments TI-30 and the Hewlett-Packard 10C are listed in
+the file <code>/usr/local/share/X11/app-defaults/XCalc-color</code>. Just copy
+one of the styles into your <code>~/.Xdefaults</code>.</p>
+<pre><code># pkg install x11/xcalc</code></pre>
+
+<h2 id="xcalendar">XCalendar</h2>
+<img src="xcalendar.gif" alt="xcalendar" height="253" width="266" />
+<p>A calendar with an integrated notebook.</p>
+<pre><code># pkg install deskutils/xcalendar</code></pre>
+
+<h2 id="xchm">XCHM</h2>
+<img src="xchm.gif" alt="xchm" height="380" width="435" />
+<p>Microsoft Windows
+<a href="https://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help">help file</a>
+viewer for Unix.</p>
+<pre><code># pkg install deskutils/xchm</code></pre>
+
+<h2 id="xclipboard">XClipboard</h2>
+<img src="xclipboard.gif" alt="xclipboard" height="230" width="310" />
+<p>A client for clipboard management in X.</p>
+<pre><code># pkg install x11/xclipboard</code></pre>
+
+<h2 id="xclock">XClock</h2>
+<img src="xclock.gif" alt="xclock" height="194" width="174" />
+<p>An analog and digital clock for X.</p>
+<pre><code># pkg install x11-clocks/xclock</code></pre>
+
+<h2 id="xclock-cat">XClock/Cat Clock</h2>
+<img src="xclock-cat.gif" alt="xclock-cat" height="330" width="160" />
+<p>A Motif-based variant of MIT <code>xclock</code> that features a "cat" mode.
+Available on <a href="https://github.com/BarkyTheDog/catclock">GitHub</a>.</p>
+<pre><code># git clone https://github.com/BarkyTheDog/catclock.git</code></pre>
+
+<h2 id="xcolorsel">XColorSel</h2>
+<img src="xcolorsel.gif" alt="xcolorsel" height="279" width="490" />
+<p>Grabs the colours of X windows.</p>
+<pre><code># pkg install x11/xcolorsel</code></pre>
+
+<h2 id="xconsole">XConsole</h2>
+<img src="xconsole.gif" alt="xconsole" height="100" width="410" />
+<p>XConsole shows system console messages.</p>
+<pre><code># pkg install x11/xconsole</code></pre>
+
+<h2 id="xedit">XEdit</h2>
+<img src="xedit.gif" alt="xedit" height="306" width="433" />
+<p>A simple text editor for X. The automated backup function for edited files
+can be disabled by adding <code>xedit*enableBackups: off</code> to
+<code>~/.Xdefaults</code>.</p>
+<pre><code># pkg install x11/xedit</code></pre>
+
+<h2 id="xearth">XEarth</h2>
+<img src="xearth.gif" alt="xearth" height="510" width="650" />
+<p>Renders the earth in 3D on the root window, making itself an animated wallpaper.
+To show it inside a window, run:</p>
+<pre><code>$ xearth -geometry 800x600 -shade -nolabel -wait 1 -timewarp 50 -noroot -twopix</code></pre>
+<p>Similiar tools are
+<a href="http://www.shaderwrangler.com/xglobe/">XGlobe</a> and
+<a href="http://xplanet.sourceforge.net/">XPlanet</a>, which also texture the
+earth.</p>
+<pre><code># pkg install astro/xearth</code></pre>
+
+<h2 id="xeyes">XEyes</h2>
+<img src="xeyes.gif" alt="xeyes" height="130" width="160" />
+<p>Eyes following the mouse cursor.</p>
+<pre><code># pkg install x11/xeyes</code></pre>
+
+<h2 id="xfontsel">XFontSel</h2>
+<img src="xfontsel.gif" alt="xfontsel" height="207" width="502" />
+<p>Lists installed fonts and available font options.</p>
+<pre><code># pkg install x11-fonts/xfontsel</code></pre>
+
+<h2 id="xkill">XKill</h2>
+<img src="xkill.gif" alt="xkill" height="138" width="266" />
+<p>Command-line tool to kill X applications.</p>
+<pre><code># pkg install x11/xkill</code></pre>
+
+<h2 id="xlennart">XLennart</h2>
+<img src="xlennart.gif" alt="xlennart" height="452" width="410" />
+<p>XLennart is a modification of the arcade game <a href="#xbill">XBill</a>. An
+evil and unpopular computer hacker named "<a href="poettering.gif">Lennart</a>"
+tries to install his malicious init system on various BSD and Linux systems.
+Like in XBill, the player has to hit him and restore infected systems.</p>
+<pre><code># pkg install games/xlennart</code></pre>
+
+<h2 id="xload">XLoad</h2>
+<img src="xload.gif" alt="xload" height="150" width="130" />
+<p>XLoad shows the current CPU load.</p>
+<pre><code># pkg install x11/xload</code></pre>
+
+<h2 id="xlock">XLock</h2>
+<img src="xlock.gif" alt="xlock" height="414" width="693" />
+<p>XLock locks the screen and optionally shows a screen saver.  It can be
+combined with <a href="https://www.freshports.org/x11/xautolock/">XAutoLock</a>
+to activate it after a user defined time of inactivity.</p>
+<p>A more simple approach is used by
+<a href="http://www.freshports.org/x11/xtrlock/">XTransparentLock</a>. Jamie
+Zawinski, the author of XScreenSaver, has listed some reason why you should use
+<a href="https://www.jwz.org/xscreensaver/versus-xlock.html">XScreenSaver instead of XLock</a>.</p>
+<pre><code># pkg install x11/xlockmore</code></pre>
+
+<h2 id="xlogo">XLogo</h2>
+<img src="xlogo.gif" alt="xlogo" height="209" width="190" />
+<p>XLogo simply draws the logo of the X Window System. The background and
+foreground colours can be altered in <code>~/.Xdefaults</code>.</p>
+<pre><code># pkg install x11/xlogo</code></pre>
+
+<h2 id="xman">XMan</h2>
+<img src="xman.gif" alt="xman" height="388" width="382" />
+<p>XMan displays system man pages.</p>
+<pre><code># pkg install x11/xman</code></pre>
+
+<h2 id="xmahjongg">XMahjongg</h2>
+<img src="xmahjongg.gif" alt="xmahjongg" height="496" width="592" />
+<p>Classic Mahjongg game for X11. Several tile sets are available.</p>
+<pre><code># pkg install games/xmahjongg</code></pre>
+
+<h2 id="xmessage">XMessage</h2>
+<img src="xmessage.gif" alt="xmessage" height="80" width="228" />
+<p>XMessage displays arbitrary text messages.</p>
+<pre><code># pkg install x11/xmessage</code></pre>
+
+<h2 id="xmixer">XMixer</h2>
+<img src="xmixer.gif" alt="xmixer" height="232" width="446" />
+<p>Audio mixer for X11.</p>
+<pre><code># pkg install audio/xmixer</code></pre>
+
+<h2 id="xmmix">XMMIX</h2>
+<img src="xmmix.gif" alt="xmmix" height="350" width="442" />
+<p>Motif-based audio mixer for X11.</p>
+<pre><code># pkg install audio/xmmix</code></pre>
+
+<h2 id="xmore">XMore</h2>
+<img src="xmore.gif" alt="xmore" height="294" width="720" />
+<p>XMore is <code>more</code> for X.</p>
+<pre><code># pkg install x11/xmore</code></pre>
+
+<h2 id="xmotd">XMotd</h2>
+<img src="xmotd.gif" alt="xmotd" height="432" width="645" />
+<p>XMotd shows the message of the day. Run it with
+<code>xmotd -always /etc/motd</code>. The appearance can be altered in
+<code>~/.Xdefaults</code>.</p>
+<pre><code># pkg install x11/xmotd</code></pre>
+
+<h2 id="xmosaic">XMosaic</h2>
+<img src="xmosaic.gif" alt="xmosaic" height="430" width="660" />
+<p>NCSA Mosaic, one of the first graphical web browsers, for X. The source code
+of version 2.7b is available on <a href="https://github.com/alandipert/ncsa-mosaic">GitHub</a>.</p>
+<pre><code># git clone https://github.com/alandipert/ncsa-mosaic.git</code></pre>
+
+<h2 id="xmountains">XMountains</h2>
+<img src="xmountains.gif" alt="xascii" height="230" width="650" />
+<p>XMountains renders a mountain scene into the root window. Also
+available as an XScreenSaver module.</p>
+<pre><code># pkg install graphics/xmountains</code></pre>
+
+<h2 id="xneko">XNeko</h2>
+<img src="xneko.gif" alt="xneko" height="150" width="200" />
+<p>Neko (猫) is a cat chasing the mouse cursor all over the screen. Oneko
+is a modified version of xneko for BSD and Linux. In the port
+<code>games/oneko-sakura</code> several other creatures can be choosen, like
+tora-neko, Sakura Kinomoto, Tomoyo Daidouji, the BSD daemon, or a dog.</p>
+<pre><code># pkg install games/xneko</code></pre>
+<p>Or:</p>
+<pre><code># pkg install games/oneko</code></pre>
+<p>Or:</p>
+<pre><code># pkg install games/oneko-sakura</code></pre>
+
+<h2 id="xodometer">XOdometer</h2>
+<img src="xodometer.gif" alt="xodometer" height="210" width="508" />
+<p>XOdometer tracks the total distance of your pointing device. The source code
+of the version from January 1996 is available on
+<a href="https://github.com/interkosmos/xodo">GitHub</a></p>
+<pre><code># git clone https://github.com/interkosmos/xodo.git</code></pre>
+
+<h2 id="xosview">XOSView</h2>
+<img src="xosview.gif" alt="xosview" height="376" width="213" />
+<p>XOSView is a visual system monitor for X11.</p>
+<pre><code># pkg install sysutils/xosview</code></pre>
+
+<h2 id="xpostit">XPostIt</h2>
+<img src="xpostit.gif" alt="xpostit" height="367" width="450" />
+<p>The most ugly note taking application on earth.</p>
+<pre><code># pkg install deskutils/xpostit</code></pre>
+
+<h2 id="xroach">XRoach</h2>
+<img src="xroach.gif" alt="xroach" height="200" width="470" />
+<p>XRoach  displays  disgusting cockroaches on your root window. These
+creepy crawlies scamper around until they  find a  window  to  hide
+under. Whenever you move or iconify a window, the exposed beetles
+again scamper for cover.</p>
+<pre><code># pkg install games/xroach</code></pre>
+
+<h2 id="xscreensaver">XScreenSaver</h2>
+<img src="xscreensaver.gif" alt="xscreensaver" height="477" width="738" />
+<p><a href="https://www.jwz.org/xscreensaver/">Jamie Zawinski</a>'s
+famous screen saver for X11.</p>
+<pre><code># pkg install x11/xscreensaver</code></pre>
+
+<h2 id="xsnow">XSnow</h2>
+<img src="xsnow.gif" alt="xsnow" height="200" width="330" />
+<p>Let is snow on your desktop. Shows snow flakes, trees, and santa.</p>
+<pre><code># pkg install x11/xsnow</code></pre>
+
+<h2 id="xspread">XSpread</h2>
+<img src="xspread.gif" alt="xspread" height="420" width="730" />
+<p>XSpread is a simple spreadsheet application based on <code>math/sc</code>. It
+can be started without X11 by using the parameter <code>-X</code>.</p>
+<pre><code># pkg install math/xspread</code></pre>
+
+<h2 id="xterm">XTerm</h2>
+<img src="xterm.gif" alt="xterm" height="177" width="338" />
+<p>Terminal emulator for the X Window System.</p>
+<pre><code># pkg install x11/xterm</code></pre>
+
+<h2 id="xv">Xv</h2>
+<img src="xv.gif" alt="xv" height="400" width="470" />
+<p>Image viewer that displays various formats.</p>
+<pre><code># pkg install graphics/xv</code></pre>
+
+<h2 id="xvkbd">Xvkbd</h2>
+<img src="xvkbd.gif" alt="xvkbd" height="222" width="648" />
+<p>Virtual keyboard for X applications.</p>
+<pre><code># pkg install x11/xvkbd</code></pre>
+
+<h2 id="xzoom">XZoom</h2>
+<img src="xzoom.gif" alt="xzoom" height="286" width="266" />
+<p>Tool to magnify, rotate, and mirror a section of the X screen.</p>
+<pre><code># pkg install x11/xzoom</code></pre>
+
+<hr />
+<p><small>Last Update:
+Wed, 26 Sep 2018 15:01:52 +0200
+</small></p>
+
+</div>
+
+</body>
+
+</html>
